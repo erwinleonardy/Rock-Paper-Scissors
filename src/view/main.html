@@ -1,0 +1,45 @@
+<!--
+    main.html
+    Author: Erwin Leonardy
+    Descrption: This file serves as the view of our home page
+-->
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/css/main.css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="/static/js/main.js"></script>
+
+        <title>Scissor Paper Stone</title>
+    </head>
+
+    <body>
+        <div class="text-center text-white bg-dark">
+            <div class="card-header">
+                <a href="{{url_for('index')}}">Home</a>
+            </div>
+
+            <div class="card-body">
+                <div class="jumbotron jumbotron-fluid bg-muted" style="background-color: transparent">
+                    <div class="container">
+                        <h1 class="display-4">Rock, Paper, Scissors!</h1>
+                        <p class="lead">A mesmerizing game that accompanies you all the time.</p>
+                        
+                        <hr class="my-4">
+                        <h5 class="mb-4 card-title">Select Play Mode</h5>
+
+                        <h5><button id="Player" class="btn btn-primary col col-sm-4">Player vs Computer</button></h5>
+                        <br>
+                        <h5><button id="Computer 2" class="btn btn-primary col col-sm-4">Computer vs Computer</button></h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer text-muted">
+                By Erwin Leonardy
+            </div>
+        </div>
+    </body>
+</html>

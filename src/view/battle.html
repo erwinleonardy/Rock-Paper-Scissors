@@ -1,0 +1,107 @@
+<!--
+    battle.html
+    Author: Erwin Leonardy
+    Descrption: This file serves as the view of our battle page
+-->
+
+<html>
+
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/css/main.css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="/static/js/main.js"></script>
+        <script src="/static/js/battle.js"></script>
+
+        <title>Scissor Paper Stone</title>
+    </head>
+
+    <!-- Start the timer if it a human player-->
+    <body {% if player == 'Player' %} 
+            onload="humanPlayer()" 
+          {% else %}
+            onload="computerPlayer()"
+          {% endif %}>
+        <div class="text-center text-white bg-dark">
+            <div class="card-header">
+                <a href="{{url_for('index')}}">Home</a>
+            </div>
+            
+            <div class="card-body">
+                <div class="container">
+                    <!-- Win count of upper screen player -->
+                     <div class="row">
+                        <p class="text-muted ml-4">Won: {{ session['p2Win'] }}</p>
+                     </div>
+
+                    <!-- Show timer if it is human player, else show the image of computer' moves -->
+                    <div class="row">
+                        {% if player == 'Player' %} 
+                            <div class="timer">
+                                <p class="lead mt-4"><span id="counter">10</p>
+                            </div>
+                        {% else %}
+                            <div class="col-sm">
+                                <img class="opp" id="Rock" src="/static/img/Rock_inverted.png" width="100px">
+                            </div>
+                            <div class="col-sm">
+                                <img class="opp" id="Scissor" src="/static/img/Scissor_inverted.png" width="100px">
+                            </div>
+                            <div class="col-sm">
+                                <img class="opp" id="Paper" src="/static/img/Paper_inverted.png" width="125px">
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Display game info -->
+                    <div class="row justify-content-center mt-5">
+                        <p class="text-white lead">{{ session['opponent'] }}</p>
+                    </div>
+
+                    <div class="row text-muted">
+                        <div class="col"><hr></div>
+                        <div class="col-auto">VS - Round {{ session['round'] }}</div>
+                        <div class="col"><hr></div>
+                    </div>
+
+                    <div class="row justify-content-center mb-5">
+                        <p class="text-white lead">{{ session['player'] }}</p>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <p class="text-white lead">
+                            {% if player == 'Player' %}
+                                Choose your move
+                            {% else %}
+                                Choosing Move...
+                            {% endif %}
+                        </p>
+                    </div>
+
+                    <!-- Shows the image of the player / computer's move -->
+                    <div class="row">
+                        <div class="col-sm">
+                            <img class="player" id="Rock" src="/static/img/Rock.png" width="100px">
+                        </div>
+                        <div class="col-sm">
+                            <img class="player" id="Scissor" src="/static/img/Scissor.png" width="100px">
+                        </div>
+                        <div class="col-sm">
+                            <img class="player" id="Paper" src="/static/img/Paper.png" width="125px">
+                        </div>
+                    </div>
+
+                    <!-- Win count of lower screen player -->
+                    <div class="row">
+                        <p class="text-muted ml-4">Won: {{ session['p1Win'] }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center card-footer text-muted bg-dark">
+                By Erwin Leonardy
+            </div>
+        </div>
+    </body>
+</html>

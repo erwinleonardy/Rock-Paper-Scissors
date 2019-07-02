@@ -1,0 +1,103 @@
+<!--
+    result.html
+    Author: Erwin Leonardy
+    Descrption: This file serves as the view of our result page
+-->
+
+<html>
+
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/css/main.css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="/static/js/main.js"></script>
+
+        <title>Scissor Paper Stone</title>
+    </head>
+
+    <!-- Show the result once the js and css are loaded -->
+    <body onload="showResult('{{playerMove}}', '{{opponentMove}}', '{{result}}')">
+        <div class="text-center text-white bg-dark">
+            <div class="card-header">
+                <a href="{{url_for('index')}}">Home</a>
+            </div>
+            
+            <div class="card-body">
+                <div class="container">
+                    <!-- Win count of upper screen player -->
+                    <div class="row">
+                        <p class="text-muted ml-4">Won: {{ session['p2Win'] }}</p>
+                    </div>
+
+                    <!-- Shows the image of the player / computer's move -->
+                    <div class="row">
+                        <div class="col-sm">
+                            <img class="opp" id="Rock" src="/static/img/Rock_inverted.png" width="100px">
+                        </div>
+                        <div class="col-sm">
+                            <img class="opp" id="Scissor" src="/static/img/Scissor_inverted.png" width="100px">
+                        </div>
+                        <div class="col-sm">
+                            <img class="opp" id="Paper" src="/static/img/Paper_inverted.png" width="125px">
+                        </div>
+                    </div>
+
+                    <!-- Display game info -->
+                    <div class="row justify-content-center mt-5">
+                        <p class="text-white lead">Computer 1</p>
+                    </div>
+
+                    <div class="row text-muted">
+                        <div class="col"><hr></div>
+                        <div class="col-auto">{{ result }}</div>
+                        <div class="col"><hr></div>
+                    </div>
+
+                    <div class="row justify-content-center mb-5">
+                        <p class="text-white lead">{{ session['player'] }}</p>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <p class="text-white lead">{{ session['player'] }} chose '{{ playerMove }}'</p>
+                    </div>
+
+                    <!-- Shows the image of the player / computer's move -->
+                    <div class="row">
+                        <div class="col-sm">
+                            <img class="player" id="Rock" src="/static/img/Rock.png" width="100px">
+                        </div>
+                        <div class="col-sm">
+                            <img class="player" id="Scissor" src="/static/img/Scissor.png" width="100px">
+                        </div>
+                        <div class="col-sm">
+                            <img class="player" id="Paper" src="/static/img/Paper.png" width="125px">
+                        </div>
+                    </div>
+
+                    <!-- Win count of lower screen player -->
+                    <div class="row">
+                        <p class="text-muted ml-4">Won: {{ session['p1Win'] }}</p>
+                    </div>
+
+                    <!-- Restart / Change mode -->
+                    <div class="row justify-content-center mt-2">
+                        <h5 class="mr-5">
+                            <button id="{{session['player']}}" class="btn btn-primary btn-md">Play again!</button>
+                        </h5>
+                        <br>
+                        <h5>
+                            <button id="change" class="btn btn-warning btn-md">Change mode</button>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center card-footer text-muted bg-dark">
+                By Erwin Leonardy
+            </div>
+        </div>
+
+        <script src="/static/js/result.js"></script>
+    </body>
+</html>
